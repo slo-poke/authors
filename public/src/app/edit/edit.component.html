@@ -1,0 +1,6 @@
+<a [routerLink]="['/home']">Home</a>
+
+<form (submit)="onSubmit(author)">
+  <input type="text" name="name" [placeholder]="author.name" [(ngModel)]="author.name" />
+  <input type="submit" value="Update" />
+</form>
