@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Author } from './author';
+import { Quotes } from './quotes';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,13 @@ export class HttpService {
   deleteAuthor(id: string): Observable<{}> {
     return this._http.delete<Author>(`/api/authors/${id}`);
   }
+
+  getQuotes(id: string): Observable<Author> {
+    return this._http.get<Author>(`/api/quotes/${id}`);
+  }
+
+  deleteQuote(id: number): Observable<{}> {
+    return this._http.put(`/api/quotes/${id}`, null);
+  }
+
 }

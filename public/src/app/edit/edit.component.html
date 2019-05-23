@@ -1,6 +1,7 @@
 <a [routerLink]="['/home']">Home</a>
 
 <form (submit)="onSubmit(author)">
+  <p *ngIf="error" style="color: red;">Name must be 3 or more characters long</p>
   <input type="text" name="name" [placeholder]="author.name" [(ngModel)]="author.name" />
   <input type="submit" value="Update" />
 </form>

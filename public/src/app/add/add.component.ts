@@ -11,18 +11,28 @@ import { Author } from '../author';
 })
 export class AddComponent implements OnInit {
   author: Author;
+  error = false;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _http: HttpService) { }
 
   ngOnInit() {
-    this.author = { name: '' };
+    this.author = { name: '', quotes: null };
   }
 
   onSubmit() {
-    this._http.createAuthor(this.author).subscribe(data => {
-      console.log('Added new author!');
-      this.author = { name: '' };
-    });
+    if(this.author.name.length >= 3) {
+      this._http.createAuthor(this.author).subscribe(data => {
+        console.log('Added new author!');
+        this.author = { name: '', quotes: null};
+        this.goHome();
+      });
+    } else {
+      this.error = true;
+    }
+  }
+
+  goHome() {
+    this._router.navigate(['/home']);
   }
 
 }

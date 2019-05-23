@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  delete(id: string): void {
-    this._http.deleteAuthor(id).subscribe(data => console.log(data));
-    this._http.getAuthors().subscribe(data => this.authors = data );
-  }
+  // delete(id: string): void {
+  //   this._http.deleteAuthor(id).subscribe(data => console.log(data));
+  //   this._http.getAuthors().subscribe(data => this.authors = data );
+  // }
 
 }

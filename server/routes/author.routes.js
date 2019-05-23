@@ -20,4 +20,12 @@ module.exports = function(app) {
     app.delete('/api/authors/:id', function(req, res) {
         authors.delete(req, res);
     })
+
+    app.get('/api/quotes/:id', function(req, res) {
+        authors.getQuotes(req, res);
+    })
+
+    app.put('/api/quotes/:id', function(req, res) {
+        authors.deleteQuote(req, res);
+    })
 }

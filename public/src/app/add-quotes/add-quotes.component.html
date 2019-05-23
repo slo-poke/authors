@@ -1,0 +1,10 @@
+<a [routerLink]="['/home']">Home</a>
+
+<p>Provide a quote by {{ author.name }}:</p>
+<form (submit)="onSubmit()">
+    <p *ngIf="error" style="color: red;">Quote must be 3 or more characters long</p>
+  <label>Quote:</label><br />
+  <input type="text" name="quote" [(ngModel)]="quote.quote" />
+  <input type="button" value="Cancel" [routerLink]="['/home']" />
+  <input type="submit" value="Submit" />
+</form>

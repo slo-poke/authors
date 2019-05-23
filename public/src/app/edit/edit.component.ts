@@ -11,7 +11,8 @@ import { HttpService } from '../http.service';
 export class EditComponent implements OnInit {
   id: string;
   authors: Author[] = [];
-  author: Author = { name: '' };
+  author: Author = { name: '', quotes: null };
+  error = false;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _http: HttpService) {
     // this.author = this.findAuthor();
@@ -23,13 +24,16 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(author: Author) {
-    this._http.editAuthor(author).subscribe(data => this.author = data );
+    if(this.author.name.length >= 3) {
+      this._http.editAuthor(author).subscribe(data => this.author = data );
+      this._router.navigate(['/home']);
+    } else {
+      this.error = true;
+    }
   }
 
   findAuthor() {
-    this._http.getAuthor(this.id).subscribe(data => 
-      { this.author = data;
-      });
+    this._http.getAuthor(this.id).subscribe(data => this.author = data );
   }
 
 }
